@@ -1,0 +1,7 @@
+{
+    "MyGeoNodeExtension": {
+        "bundle": "http://localhost:8082/extension/index.js",
+        "assets": "http://localhost:8082/extension/assets",
+        "translations": "http://localhost:8082/extension/translations"
+    }
+}

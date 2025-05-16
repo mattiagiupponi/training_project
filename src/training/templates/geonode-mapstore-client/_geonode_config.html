@@ -3,6 +3,20 @@
 <script>
     window.__GEONODE_CONFIG__.overrideLocalConfig = function(localConfig, _) {
         // Here the localConfig can be overridden and/or extended
+
+        // comment out this if statement to exclude development of extension
+        if (window.location.href.indexOf('http://localhost:8081') === 0) {
+            // extensions vaiables for develpment
+            localConfig.extensionsFolder = ''; // empty string direct request to http://localhost:8082
+            localConfig.extensionsRegistry = '/static/extensions-dev/index.json'; // entrypoint for extensions make_list
+            // exclude following url from proxy for development
+            localConfig.proxyUrl.useCORS.push('http://localhost:8082');
+            localConfig.proxyUrl.useCORS.push('http://localhost:8000');
+        }
+
+        // include the custom extension in the map viewer
+        localConfig.plugins.map_viewer.push({ name: 'MyGeoNodeExtension' });
+
         return localConfig;
     };
 </script>

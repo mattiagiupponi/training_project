@@ -1,0 +1,7 @@
+{
+    "MyGeoNodeExtension": {
+        "bundle": "MyGeoNodeExtension/index.js",
+        "translations": "MyGeoNodeExtension/translations",
+        "assets": "MyGeoNodeExtension/assets"
+    }
+}

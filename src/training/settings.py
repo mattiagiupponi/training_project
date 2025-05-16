@@ -79,3 +79,62 @@ TEMPLATES[0].pop("APP_DIRS", None)
 INSTALLED_APPS += ("training.custom",)
 
 INSTALLED_APPS += ("training.example",)
+
+LANGUAGES = (
+    ('en-us', 'English'),
+    ('it-it', 'Italiano'),
+)
+
+MAPSTORE_TRANSLATIONS_PATH = [
+    '/static/mapstore/ms-translations',
+    '/static/mapstore/gn-translations',
+    '/static/mapstore/project-translations'
+]
+
+DEFAULT_MAP_CENTER_X = 1261620 # initial x center position of the map (EPSG:3857 default crs)
+DEFAULT_MAP_CENTER_Y = 5439686 # initial y center position of the map (EPSG:3857 default crs)
+DEFAULT_MAP_ZOOM = 10 # initial zoom level of the map
+
+MAPSTORE_BASELAYERS = [
+    {
+        "type": "osm",
+        "title": "Open Street Map",
+        "name": "mapnik",
+        "source": "osm",
+        "group": "background",
+        "visibility": True
+    },
+    {
+        "source": "ol",
+        "group": "background",
+        "id": "none",
+        "name": "empty",
+        "title": "Empty Background",
+        "type": "empty",
+        "visibility": False,
+        "args": ["Empty Background", {"visibility": False}]
+    },
+    {
+        "format": "image/jpeg",
+        "group": "background",
+        "name": "osm:osm_simple_dark",
+        "opacity": 1,
+        "title": "OSM Simple Dark",
+        "thumbURL": "/static/img/hero.jpeg",
+        "type": "wms",
+        "url": [
+            "https://maps6.geosolutionsgroup.com/geoserver/wms",
+            "https://maps3.geosolutionsgroup.com/geoserver/wms",
+            "https://maps1.geosolutionsgroup.com/geoserver/wms",
+            "https://maps4.geosolutionsgroup.com/geoserver/wms",
+            "https://maps2.geosolutionsgroup.com/geoserver/wms",
+            "https://maps5.geosolutionsgroup.com/geoserver/wms"
+        ],
+        "source": "osm_simple_dark",
+        "visibility": False,
+        "singleTile": False,
+        "credits": {
+            "title": "OSM Simple Dark | Rendering <a href=\"https://www.geo-solutions.it/\">GeoSolutions</a> | Data © <a href=\"http://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>"
+        }
+    }
+]
